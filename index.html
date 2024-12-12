@@ -11,6 +11,10 @@
         <input type="text" id="playerO" placeholder="Nome Giocatore O">
         <button onclick="startGame()">Inizia Gioco</button>
     </div>
+    <div id="scoreboard" class="hidden">
+        <div id="scoreX">0</div>
+        <div id="scoreO">0</div>
+    </div>
     <div id="game" class="hidden">
         <div class="cell" id="cell-0"></div>
         <div class="cell" id="cell-1"></div>
@@ -21,6 +25,10 @@
         <div class="cell" id="cell-6"></div>
         <div class="cell" id="cell-7"></div>
         <div class="cell" id="cell-8"></div>
+    </div>
+    <div id="controls" class="hidden">
+        <button onclick="undoMove()">Annulla mossa</button>
+        <button onclick="restartGame()">Nuova Partita</button>
     </div>
     <div id="winner" class="hidden"></div>
     <script src="script.js"></script>
