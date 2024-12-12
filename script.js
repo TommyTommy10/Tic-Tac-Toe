@@ -4,14 +4,20 @@ let playerX = '';
 let playerO = '';
 let board = ['', '', '', '', '', '', '', '', ''];
 let gameActive = false;
+let moveHistory = [];
+let score = { X: 0, O: 0 };
 
 function startGame() {
     playerX = document.getElementById('playerX').value || 'Giocatore X';
     playerO = document.getElementById('playerO').value || 'Giocatore O';
     currentPlayer = Math.random() < 0.5 ? 'X' : 'O';
     gameActive = true;
+    board = ['', '', '', '', '', '', '', '', ''];
+    moveHistory = [];
     document.getElementById('players').classList.add('hidden');
+    document.getElementById('scoreboard').classList.remove('hidden');
     document.getElementById('game').classList.remove('hidden');
+    document.getElementById('controls').classList.remove('hidden');
     document.getElementById('winner').classList.add('hidden');
     cells.forEach(cell => {
         cell.textContent = '';
@@ -29,17 +35,21 @@ function handleCellClick(event) {
 
     board[cellIndex] = currentPlayer;
     cell.textContent = currentPlayer;
+    moveHistory.push(cellIndex);
 
     if (checkWinner()) {
         gameActive = false;
         document.getElementById('winner').textContent = `Vince ${currentPlayer === 'X' ? playerX : playerO}!`;
         document.getElementById('winner').classList.remove('hidden');
+        updateScore();
+        setTimeout(startGame, 2000);
         return;
     }
 
     if (board.every(cell => cell !== '')) {
         document.getElementById('winner').textContent = 'Pareggio!';
         document.getElementById('winner').classList.remove('hidden');
+        setTimeout(startGame, 2000);
         return;
     }
 
@@ -61,4 +71,22 @@ function checkWinner() {
     return winPatterns.some(pattern => {
         return pattern.every(index => board[index] === currentPlayer);
     });
+}
+
+function updateScore() {
+    score[currentPlayer]++;
+    document.getElementById(`score${currentPlayer}`).textContent = score[currentPlayer];
+}
+
+function undoMove() {
+    if (moveHistory.length > 0 && gameActive) {
+        const lastMove = moveHistory.pop();
+        board[lastMove] = '';
+        document.getElementById(`cell-${lastMove}`).textContent = '';
+        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+    }
+}
+
+function restartGame() {
+    startGame();
 }
