@@ -6,7 +6,12 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="game">
+    <div id="players">
+        <input type="text" id="playerX" placeholder="Nome Giocatore X">
+        <input type="text" id="playerO" placeholder="Nome Giocatore O">
+        <button onclick="startGame()">Inizia Gioco</button>
+    </div>
+    <div id="game" class="hidden">
         <div class="cell" id="cell-0"></div>
         <div class="cell" id="cell-1"></div>
         <div class="cell" id="cell-2"></div>
@@ -17,6 +22,7 @@
         <div class="cell" id="cell-7"></div>
         <div class="cell" id="cell-8"></div>
     </div>
+    <div id="winner" class="hidden"></div>
     <script src="script.js"></script>
 </body>
 </html>
