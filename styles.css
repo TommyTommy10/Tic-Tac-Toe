@@ -8,14 +8,16 @@ body {
     font-family: Arial, sans-serif;
 }
 
-#players, #winner {
+#players, #scoreboard, #controls, #winner {
     margin-bottom: 20px;
+    text-align: center;
 }
 
 #game {
     display: grid;
     grid-template-columns: repeat(3, 100px);
     grid-gap: 10px;
+    margin-bottom: 20px;
 }
 
 .cell {
@@ -28,6 +30,7 @@ body {
     font-size: 2em;
     cursor: pointer;
     border: 2px solid #ccc;
+    transition: background-color 0.3s;
 }
 
 .cell:hover {
@@ -36,4 +39,14 @@ body {
 
 .hidden {
     display: none;
+}
+
+#winner {
+    font-size: 1.5em;
+    color: green;
+}
+
+#scoreboard > div {
+    font-size: 1.2em;
+    margin: 5px;
 }
