@@ -12,8 +12,9 @@
         <button onclick="startGame()">Inizia Gioco</button>
     </div>
     <div id="scoreboard" class="hidden">
-        <div id="scoreX">0</div>
-        <div id="scoreO">0</div>
+        <div id="scoreX">X: <span id="scoreX-value">0</span></div>
+        <div id="scoreO">O: <span id="scoreO-value">0</span></div>
+        <button onclick="resetScores()">Resetta Punteggio</button>
     </div>
     <div id="game" class="hidden">
         <div class="cell" id="cell-0"></div>
