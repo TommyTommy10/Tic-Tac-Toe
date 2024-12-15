@@ -24,6 +24,7 @@ function startGame() {
         cell.addEventListener('click', handleCellClick);
     });
     updateScoreboardNames();
+    updateScoreboard();
 }
 
 function handleCellClick(event) {
@@ -43,14 +44,14 @@ function handleCellClick(event) {
         document.getElementById('winner').textContent = `Vince ${currentPlayer === 'X' ? playerX : playerO}!`;
         document.getElementById('winner').classList.remove('hidden');
         updateScore();
-        setTimeout(startGame, 2000);
+        setTimeout(startGame, 2000); // Avvia nuova partita automaticamente dopo 2 secondi
         return;
     }
 
     if (board.every(cell => cell !== '')) {
         document.getElementById('winner').textContent = 'Pareggio!';
         document.getElementById('winner').classList.remove('hidden');
-        setTimeout(startGame, 2000);
+        setTimeout(startGame, 2000); // Avvia nuova partita automaticamente dopo 2 secondi
         return;
     }
 
@@ -103,7 +104,6 @@ function updateScoreboard() {
 }
 
 function updateScoreboardNames() {
-    document.getElementById('scoreX').textContent = `${playerX} (X): `;
-    document.getElementById('scoreO').textContent = `${playerO} (O): `;
-    updateScoreboard();
+    document.getElementById('nameX').textContent = playerX;
+    document.getElementById('nameO').textContent = playerO;
 }
