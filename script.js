@@ -23,6 +23,7 @@ function startGame() {
         cell.textContent = '';
         cell.addEventListener('click', handleCellClick);
     });
+    updateScoreboardNames();
 }
 
 function handleCellClick(event) {
@@ -75,7 +76,7 @@ function checkWinner() {
 
 function updateScore() {
     score[currentPlayer]++;
-    document.getElementById(`score${currentPlayer}`).textContent = score[currentPlayer];
+    document.getElementById(`score${currentPlayer}-value`).textContent = score[currentPlayer];
 }
 
 function undoMove() {
@@ -89,4 +90,20 @@ function undoMove() {
 
 function restartGame() {
     startGame();
+}
+
+function resetScores() {
+    score = { X: 0, O: 0 };
+    updateScoreboard();
+}
+
+function updateScoreboard() {
+    document.getElementById('scoreX-value').textContent = score.X;
+    document.getElementById('scoreO-value').textContent = score.O;
+}
+
+function updateScoreboardNames() {
+    document.getElementById('scoreX').textContent = `${playerX} (X): `;
+    document.getElementById('scoreO').textContent = `${playerO} (O): `;
+    updateScoreboard();
 }
