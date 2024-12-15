@@ -13,6 +13,21 @@ body {
     text-align: center;
 }
 
+#scoreboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#scoreboard > div {
+    margin: 0 15px;
+    font-size: 1.2em;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
 #game {
     display: grid;
     grid-template-columns: repeat(3, 100px);
@@ -23,18 +38,19 @@ body {
 .cell {
     width: 100px;
     height: 100px;
-    background-color: #fff;
+    background-color: #87CEEB; /* SkyBlue */
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 2em;
     cursor: pointer;
-    border: 2px solid #ccc;
+    border: 2px solid #4682B4; /* SteelBlue */
     transition: background-color 0.3s;
+    color: #2F4F4F; /* DarkSlateGray */
 }
 
 .cell:hover {
-    background-color: #f9f9f9;
+    background-color: #ADD8E6; /* LightBlue */
 }
 
 .hidden {
@@ -46,7 +62,17 @@ body {
     color: green;
 }
 
-#scoreboard > div {
-    font-size: 1.2em;
-    margin: 5px;
+button {
+    background-color: #4682B4;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #5A9;
 }
